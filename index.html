@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>proxmox script</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="description" content="Description" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1.0"
+    />
+
+    <link rel="icon" href="_media/favicon.ico" />
+    <!-- Stylesheets -->
+    <link
+      rel="stylesheet"
+      data-style-group="themeable"
+      href="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/css/theme-defaults.css"
+      disabled
+    />
+    <link
+      rel="stylesheet"
+      data-style-group="themeable"
+      media="(prefers-color-scheme: dark)"
+      href="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/css/theme-simple-dark.css"
+    />
+    <link
+      rel="stylesheet"
+      data-style-group="themeable"
+      media="(prefers-color-scheme: light)"
+      href="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/css/theme-simple.css"
+    />
+    <link rel="stylesheet" href="assets/css/main.css" />
+  </head>
+
+  <body>
+    <div id="app"></div>
+    <script>
+      window.$docsify = {
+        name: "Menu",
+        repo: "karlcc/Proxmox",
+        loadSidebar: true,
+        homepage: "README.md",
+
+        // NAVIGATION
+        // -----------------------------------------------------------------
+        alias: {
+          ".*?/changelog":
+            "https://raw.githubusercontent.com/karlcc/Proxmox/main/CHANGELOG.md",
+        },
+        auto2top: true,
+        maxLevel: 2,
+        subMaxLevel: 2,
+
+        search: {
+          depth: 2,
+        },
+        requestHeaders: {
+          "cache-control": "max-age=0",
+        },
+      };
+    </script>
+    <!-- Docsify v4 -->
+    <!-- <script src="//cdn.jsdelivr.net/npm/docsify@4"></script> -->
+    <!-- Required -->
+    <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/docsify.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/js/docsify-themeable.min.js"></script>
+
+    <!-- Recommended -->
+    <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/search.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/zoom-image.min.js"></script>
+
+    <!-- plugins -->
+    <script src="https://cdn.jsdelivr.net/npm/docsify-pagination@2/dist/docsify-pagination.min.js"></script>
+  </body>
+</html>

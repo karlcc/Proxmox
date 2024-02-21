@@ -1,0 +1,19 @@
+- hosts: proxmox_labs:pbs
+  become: yes
+  become_user: root
+  tasks:
+
+  - name: Shell
+    shell: |
+      USERNAME="ansible"
+      PASSWORD="ansible"
+      echo "Deleting user ${USERNAME}"
+      pveum user delete ${USERNAME}@pam
+      echo "Creating user ${USERNAME}"
+      pveum useradd ${USERNAME}@pam --password ${PASSWORD}
+      pveum group add admin -comment "System Administrators"
+      pveum acl modify / -group admin -role Administrator
+      pveum user modify ${USERNAME}@pam -group admin
+      echo "Done"
+    register: output
+  - debug: msg="{{ output.stdout_lines }}"

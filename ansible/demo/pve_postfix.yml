@@ -1,0 +1,25 @@
+- hosts: proxmox_labs:all
+
+  tasks:
+  - name: install libsasl2-modules package
+    become: yes
+    become_user: root
+    apt:
+      name: libsasl2-modules
+      update_cache: yes
+      cache_valid_time: 3600
+      state: latest
+    notify:
+      - postmap sasl_passwd
+      - restart postfix
+
+  roles:
+     - arillso.postfix
+  vars:
+    postfix_relayhost: smtp.gmail.com
+    postfix_relayhost_port: 587
+    postfix_relaytls: true
+    postfix_sasl_auth_enabled: true
+    postfix_sasl_security_options: noanonymous
+    postfix_sasl_user: hello@karldigi.dev
+    postfix_sasl_password: <PASSWORD>

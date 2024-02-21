@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  ansible-runner:
+    build:
+      context: .
+      dockerfile: Dockerfile.ansible
+    container_name: ansible-runner
+    command: sh -c "ansible-runner worker && tail -f /dev/null"
+    volumes:
+    - ./demo:/runner
+    environment:
+    - ANSIBLE_CONFIG=/runner/ansible.cfg
