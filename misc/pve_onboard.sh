@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Add user
-adduser ansible
+useradd ansible
 
 # Modify group memberships
 usermod -aG adm,cdrom,sudo,dip,plugdev,lxd ansible

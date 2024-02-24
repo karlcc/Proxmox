@@ -10,5 +10,5 @@ Before you start with Ansible, you'll need the following:
 ## shell
 
 ```bash
-bash -c "$(wget -qLO - https://raw.githubusercontent.com/karlcc/Proxmox/40f38d6ac3bce8e0933f987244c721cb8075ea2d/misc/pve_onboard.sh)"
+bash -c "$(wget -qLO - https://raw.githubusercontent.com/karlcc/Proxmox/b83a755c5b187b46a62096271a59edc8fdd2e57c/misc/pve_onboard.sh)"
 ```
