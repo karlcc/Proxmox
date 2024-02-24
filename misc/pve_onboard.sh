@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 
 # Add user
-sudo adduser ansible
+adduser ansible
 
 # Modify group memberships
-sudo usermod -aG adm,cdrom,sudo,dip,plugdev,lxd ansible
+usermod -aG adm,cdrom,sudo,dip,plugdev,lxd ansible
+
+echo "ansible ALL=(ALL) NOPASSWD: ALL" > files/sudoer_ansible
