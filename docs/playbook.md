@@ -1,44 +1,3 @@
-# Requirements
->Before you start with Ansible, you'll need the following:
-- Control Machine: Ansible is agentless, which means you don't need to install any software on the managed hosts. Instead, you need a control machine from which you'll run Ansible. The control machine can be your local machine or a dedicated server. It should be a Unix-like system (e.g., Linux, macOS) or a Windows system with Windows Subsystem for Linux (WSL) installed.
-- or Using customized build docker image.
-
-## Docker
->docker-compose.yml
-```yaml
-version: '3.8'
-
-services:
-  ansible-runner:
-    build:
-      context: .
-      dockerfile: Dockerfile.ansible
-    container_name: ansible-runner
-    command: sh -c "ansible-runner worker && tail -f /dev/null"
-    volumes:
-    - ./demo:/runner
-    environment:
-    - ANSIBLE_CONFIG=/runner/ansible.cfg
-
-```
->Dockerfile.ansible
-```Dockerfile
-FROM ghcr.io/ansible-community/community-ee-base:latest
-
-# Switch to root user to perform privileged operations
-USER root
-
-# Create a user with UID 1000
-RUN useradd -m -u 1000 ansible && \
-    echo "ansible ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/1000
-
-# Switch back to the non-root user (if any)
-USER ansible
-
-# Run ssh-keygen to generate Ed25519 SSH key pair
-RUN ssh-keygen -t ed25519 -f /home/ansible/.ssh/ansible-key -N "" -q
-```
-
 ## ansible-playbook
 
 >create ansible-playbook<br>
@@ -54,7 +13,7 @@ ansible proxmox_labs -i ./inventory -m ping -u root -k
 ansible-playbook pve_onboard.yml -i inventory -u root -k -l proxmox_labs
 ```
 >pve_onboard.yml
-```yaml
+```yml
 - hosts: proxmox_labs:all
   tasks:
 
@@ -122,7 +81,7 @@ ansible proxmox_labs -m ping -i ./inventory -u ansible --private-key ~/.ssh/ansi
 ansible-playbook pve_update.yml -i ./inventory -u ansible --private-key ~/.ssh/ansible-key -l proxmox_labs
 ```
 >pve_update.yml
-```yaml
+```yml
 - hosts: proxmox_labs:all
   become: yes
   become_user: root
@@ -150,7 +109,7 @@ ansible-playbook pve_update.yml -i ./inventory -u ansible --private-key ~/.ssh/a
 ```
 
 >pve_postfix.yml
-```yaml
+```yml
 - hosts: proxmox_labs:all
 
   tasks:
