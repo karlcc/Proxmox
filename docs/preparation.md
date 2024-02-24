@@ -7,8 +7,8 @@ Before you start with Ansible, you'll need the following:
 1. `SSH`: Ansible communicates with managed hosts over SSH. Ensure that SSH is installed and properly configured on both the control machine and the managed hosts.
 1. Alternatively, you can use a customized build `Docker` image that has all the required software installed.
 
-## shell
+## pve_onboard shell
 
-```bash
-bash -c "$(wget -qLO - https://raw.githubusercontent.com/karlcc/Proxmox/8802720c0e852812e818893a256aa932e93de56f/misc/pve_onboard.sh)"
+```shell
+bash -c "$(wget -qLO - https://raw.githubusercontent.com/karlcc/Proxmox/7ad908ab7ee93c89a0b97f75dcc7f5c020998be1/misc/pve_onboard.sh)"
 ```

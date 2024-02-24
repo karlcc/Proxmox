@@ -14,3 +14,13 @@ if [[ $answer == [Yy] ]]; then
 else
     echo "No changes were made. User 'ansible' was not added."
 fi
+
+read -p "Press enter to continue..."
+
+# Switch back to the non-root user (if any)
+if [[ $EUID -eq 0 ]]; then
+    su - ansible
+fi
+
+# Run ssh-keygen to generate Ed25519 SSH key pair
+ssh-keygen -t ed25519 -f /home/ansible/.ssh/ansible-key -N "" -q
