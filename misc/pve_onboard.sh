@@ -3,8 +3,8 @@
 read -p "Do you want to add the 'ansible' user? (y/n): " answer
 
 if [[ $answer == [Yy] ]]; then
-    # Add user
-    useradd ansible
+    # Add user with home directory
+    useradd -m ansible
 
     # Modify group memberships
     usermod -aG adm,cdrom,sudo,dip,plugdev,lxd ansible
@@ -15,7 +15,7 @@ else
     echo "No changes were made. User 'ansible' was not added."
 fi
 
-read -p "Press enter to continue..."
+read -p "Press enter to continue prepare ssh..."
 
 # Switch back to the non-root user (if any)
 if [[ $EUID -eq 0 ]]; then
