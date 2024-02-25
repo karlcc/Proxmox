@@ -1,11 +1,14 @@
 #!/usr/bin/env bash
 
 read -p "Enter the IP address of the remote IP of PVE node: " remote_ip
-ssh -i ~/.ssh/ansible-key root@$remote_ip
 
+# Connect to the remote PC using the SSH key
+ssh -i ~/.ssh/ansible-key root@$remote_ip << EOF
+
+# User creation commands
 read -p "Do you want to add the 'ansible' user? (y/n): " answer
 
-if [[ $answer == [Yy] ]]; then
+if [[ \$answer == [Yy] ]]; then
     # Add user with home directory
     useradd -m ansible
 
@@ -18,4 +21,6 @@ else
     echo "No changes were made. User 'ansible' was not added."
 fi
 
+EOF
 
+echo "SSH connection closed."
