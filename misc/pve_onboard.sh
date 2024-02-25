@@ -9,7 +9,7 @@ ssh-keygen -t ed25519 -f ~/.ssh/ansible-key -N "" -q
 
 echo "SSH key pair has been generated for the '$current_user' user."
 
-read -p "Enter the IP address of the remote PC: " remote_ip
+read -p "Enter the IP address of the remote IP of PVE node: " remote_ip
 
-# Transfer the public key to the remote PC
-ssh-copy-id -i ~/.ssh/ansible-key.pub root@$remote_ip
+# Transfer the public key to the remote PC, forcing password authentication
+ssh-copy-id -o PreferredAuthentications=keyboard-interactive -i ~/.ssh/ansible-key.pub root@$remote_ip

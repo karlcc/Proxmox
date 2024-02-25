@@ -1,6 +1,7 @@
 Automatic config proxmox ve server by Ansile playbook, bash scripts.
 - Ansible
     - [Preparation](preparation.md)
+    - [SSH](sshsetup.md)
     - [Docker](docker.md)
     - [Playbook](playbook.md)
 - **Links**
