@@ -21,3 +21,8 @@ read -p "Press enter to generate an SSH key pair for the 'ansible' user..."
 sudo -i -u ansible ssh-keygen -t ed25519 -f /home/ansible/.ssh/ansible-key -N "" -q
 
 echo "SSH key pair has been generated for the 'ansible' user."
+
+read -p "Enter the IP address of the remote PC: " remote_ip
+
+# Transfer the public key to the remote PC
+ssh-copy-id -i /home/ansible/.ssh/ansible-key.pub root@$remote_ip
