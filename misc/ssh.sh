@@ -19,6 +19,8 @@ cat ~/.ssh/ansible-key.pub
 # ansible@ubuntu-server:~$ cat ~/.ssh/ansible-key.pub
 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIiLk4bu58TwhnVr04gS4Pk4nl6UNhcyVt0wRpTHOJqp ansible@ubuntu-server
 
+ssh -i ~/.ssh/ansible-key ansible@10.10.2.1
+
 paste pub key to pve_onboard.yml
 
 mkdir files

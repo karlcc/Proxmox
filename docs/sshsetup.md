@@ -10,5 +10,5 @@ bash -c "$(wget -qLO - https://raw.githubusercontent.com/karlcc/Proxmox/main/mis
 ## add ansible user
 run the following command on ansible control machine:
 ```shell
-bash -c "$(wget -qLO - https://raw.githubusercontent.com/karlcc/Proxmox/e55b6bd81df6d592d2d8a5b28214c710ff1e674d/misc/pve_onboard.sh)"
+bash -c "$(wget -qLO - https://raw.githubusercontent.com/karlcc/Proxmox/main/misc/pve_onboard.sh)"
 ```
