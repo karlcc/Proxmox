@@ -28,7 +28,7 @@ if [[ $answer == [Yy] ]]; then
         chmod 700 /home/ansible/.ssh
 
         # Copy SSH public key to the new ansible user's directory
-        cp ~/.ssh/ansible-key.pub /home/ansible/.ssh/authorized_keys
+        cp ~/.ssh/authorized_keys /home/ansible/.ssh/authorized_keys
         chown ansible:ansible /home/ansible/.ssh/authorized_keys
         chmod 600 /home/ansible/.ssh/authorized_keys
 
