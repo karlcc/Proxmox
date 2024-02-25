@@ -7,6 +7,12 @@ if [[ $answer == [Yy] ]]; then
     # Connect to the remote PC using the SSH key
     ssh -i ~/.ssh/ansible-key root@$remote_ip << EOF
 
+        # Update package lists
+        apt update
+
+        # Install sudo package
+        apt install -y sudo
+
         # Add user with home directory
         useradd -m ansible
 
@@ -15,6 +21,16 @@ if [[ $answer == [Yy] ]]; then
 
         echo "ansible ALL=(ALL) NOPASSWD: ALL" | tee /etc/sudoers.d/ansible >/dev/null
         echo "User 'ansible' has been added."
+
+        # Create the ~/.ssh directory for the new ansible user
+        mkdir -p /home/ansible/.ssh
+        chown ansible:ansible /home/ansible/.ssh
+        chmod 700 /home/ansible/.ssh
+
+        # Copy SSH public key to the new ansible user's directory
+        cp ~/.ssh/ansible-key.pub /home/ansible/.ssh/authorized_keys
+        chown ansible:ansible /home/ansible/.ssh/authorized_keys
+        chmod 600 /home/ansible/.ssh/authorized_keys
 
 EOF
 
