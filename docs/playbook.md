@@ -3,6 +3,7 @@
 >create ansible-playbook<br>
 >create ansible.cfg<br>
 >create inventory<br>
+* add target IPs to inventory<br>
 
 >test connection using root user with remote node password
 ```bash

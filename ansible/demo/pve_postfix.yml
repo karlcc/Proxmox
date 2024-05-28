@@ -21,5 +21,5 @@
     postfix_relaytls: true
     postfix_sasl_auth_enabled: true
     postfix_sasl_security_options: noanonymous
-    postfix_sasl_user: hello@karldigi.dev
-    postfix_sasl_password: <PASSWORD>
+    postfix_sasl_user: ${SASL_USER:-hello@karldigi.dev}
+    postfix_sasl_password: ${SASL_PASSWORD:-password}
