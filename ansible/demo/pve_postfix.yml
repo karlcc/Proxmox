@@ -1,4 +1,6 @@
 - hosts: proxmox_labs:all
+  vars_files:
+    - .env
 
   tasks:
   - name: install libsasl2-modules package
@@ -21,5 +23,5 @@
     postfix_relaytls: true
     postfix_sasl_auth_enabled: true
     postfix_sasl_security_options: noanonymous
-    postfix_sasl_user: ${SASL_USER:-hello@karldigi.dev}
-    postfix_sasl_password: ${SASL_PASSWORD:-password}
+    postfix_sasl_user: "{{SASL_USER}}"
+    postfix_sasl_password: "{{SASL_PASSWORD}}"

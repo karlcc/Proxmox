@@ -1,0 +1,16 @@
+- hosts: proxmox_labs:all
+  become: yes
+  become_user: root
+  vars_files:
+    - .env
+    
+  tasks:
+  - name: Shell
+    shell: |
+      USERNAME="root"
+      EMAIL="{{ NOTIFY_EMAIL }}"
+      echo "Change user ${USERNAME} email to ${EMAIL}"
+      proxmox-backup-manager user update ${USERNAME}@pam --email ${EMAIL}
+      echo "Done"
+    register: output
+  - debug: msg="{{ output.stdout_lines }}"

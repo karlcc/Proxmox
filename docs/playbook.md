@@ -108,10 +108,17 @@ ansible-playbook pve_update.yml -i ./inventory -u ansible --private-key ~/.ssh/a
         test_command: uptime
       when: reboot_required_file.stat.exists
 ```
+>install and config postfix
+```bash
+ansible-galaxy install arillso.postfix
+ansible-playbook pve_postfix.yml -i ./inventory -u ansible --private-key ~/.ssh/ansible-key -l proxmox_labs
+```
 
 >pve_postfix.yml
 ```yml
 - hosts: proxmox_labs:all
+  vars_files:
+    - .env
 
   tasks:
   - name: install libsasl2-modules package
@@ -134,6 +141,6 @@ ansible-playbook pve_update.yml -i ./inventory -u ansible --private-key ~/.ssh/a
     postfix_relaytls: true
     postfix_sasl_auth_enabled: true
     postfix_sasl_security_options: noanonymous
-    postfix_sasl_user: hello@karldigi.dev
-    postfix_sasl_password: <PASSWORD>
+    postfix_sasl_user: "{{SASL_USER}}"
+    postfix_sasl_password: "{{SASL_PASSWORD}}"
 ```

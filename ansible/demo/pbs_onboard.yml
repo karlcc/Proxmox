@@ -1,0 +1,25 @@
+- hosts: pbs:all
+  tasks:
+
+  - name: install sudo package
+    apt:
+      name: sudo
+      update_cache: yes
+
+  - name: create Ansible user
+    user:
+      name: ansible
+      shell: '/bin/bash'
+
+  - name: add Ansible ssh key
+    authorized_key:
+      user: ansible
+      key: "{{ lookup('file', '/home/ansible/.ssh/ansible-key.pub') }}"
+
+  - name: add ansible to sudoers
+    copy:
+      src: sudoer_ansible
+      dest: /etc/sudoers.d/ansible
+      owner: root
+      group: root
+      mode: 0440

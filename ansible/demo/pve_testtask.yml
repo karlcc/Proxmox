@@ -1,4 +1,4 @@
-- hosts: proxmox_labs:pbs
+- hosts: proxmox_labs:all
   become: yes
   become_user: root
   tasks:

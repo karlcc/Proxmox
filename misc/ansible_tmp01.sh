@@ -59,3 +59,21 @@ Again, this will prompt you for the sudo password interactively. Choose the opti
 nano ~/proxmox_update.yml
 
 ansible-playbook -u root ~/proxmox_update.yml
+
+PBS
+ansible pbs -i ./inventory -m ping -u root -k
+
+ansible-playbook pbs_onboard.yml -i inventory -u root -k -l pbs
+
+ansible pbs -m ping -i ./inventory -u ansible --private-key ~/.ssh/ansible-key
+
+ansible-playbook pve_update.yml -i ./inventory -u ansible --private-key ~/.ssh/ansible-key -l pbs
+
+ansible-playbook pve_postfix.yml -i ./inventory -u ansible --private-key ~/.ssh/ansible-key -l pbs
+
+echo "Test message" | mail -s subject karl.logon@gmail.com
+
+pbs console:
+proxmox-backup-manager user update root@pam --email me@karldigi.dev
+
+ansible-playbook pbs_useremail.yml -i ./inventory -u ansible --private-key ~/.ssh/ansible-key -l pbs
