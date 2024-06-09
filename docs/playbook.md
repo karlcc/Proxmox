@@ -111,6 +111,8 @@ ansible-playbook pve_update.yml -i ./inventory -u ansible --private-key ~/.ssh/a
 >install and config postfix
 ```bash
 ansible-galaxy install arillso.postfix
+```
+```bash
 ansible-playbook pve_postfix.yml -i ./inventory -u ansible --private-key ~/.ssh/ansible-key -l proxmox_labs
 ```
 
